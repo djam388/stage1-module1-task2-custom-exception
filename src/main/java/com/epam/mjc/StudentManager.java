@@ -6,7 +6,13 @@ public class StudentManager {
   private static final long[] IDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
   public Student find(long studentID) {
-    return Student.getValueOf(studentID);
+    Student student = Student.getValueOf(studentID);
+    if (student != null) {
+      return student;
+    }
+    else {
+      throw new CustomException("Could not find student with ID " + studentID, new IllegalArgumentException());
+    }
   }
 
   public static void main(String[] args) {
